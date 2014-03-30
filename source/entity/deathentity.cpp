@@ -42,7 +42,7 @@ void DeathEntity::Load(MetadataObject &metadata, SceneNode *sprites)
 	}
 }
 
-Vector3f DeathEntity::GetPosition()
+vec3 DeathEntity::GetPosition()
 {
 	return pSprite->GetPosition();
 }

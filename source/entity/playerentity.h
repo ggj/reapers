@@ -25,12 +25,12 @@ class PlayerEntity: public SpriteEntity,
 		virtual void Update(f32 dt);
 
 		// IEventInputKeyboardListener
-		virtual void OnInputKeyboardPress(const EventInputKeyboard *ev);
+		virtual bool OnInputKeyboardPress(const EventInputKeyboard *ev);
 
 		// IEventInputKeyboardListener
-		virtual void OnInputKeyboardRelease(const EventInputKeyboard *ev);
+		virtual bool OnInputKeyboardRelease(const EventInputKeyboard *ev);
 
-		Vector3f GetPosition();
+		vec3 GetPosition();
 		Sprite *GetSprite() const;
 		b2Vec2 GetBodyPosition() const;
 
@@ -47,7 +47,7 @@ class PlayerEntity: public SpriteEntity,
 	protected:
 		b2Body *pBody;
 		Sprite *pIcon;
-		Vector3f vPlayerVectorDirection;
+		vec3 vPlayerVectorDirection;
 
 		ItemTypes::Enum eItem;
 

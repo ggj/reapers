@@ -52,7 +52,7 @@ void PlayerEntity::Load(MetadataObject &metadata, SceneNode *sprites)
 	vPlayerVectorDirection = VECTOR_ZERO;
 }
 
-Vector3f PlayerEntity::GetPosition()
+vec3 PlayerEntity::GetPosition()
 {
 	return pSprite->GetPosition();
 }
@@ -79,7 +79,7 @@ void PlayerEntity::Teleport(const b2Vec2 &position)
 
 void PlayerEntity::Update(f32 dt)
 {
-	pIcon->SetPosition(pSprite->GetPosition() + Vector3f(0, -40, 0));
+	pIcon->SetPosition(pSprite->GetPosition() + vec3(0, -40, 0));
 
 	b2Vec2 vel = pBody->GetLinearVelocity();
 
@@ -149,11 +149,11 @@ void PlayerEntity::Update(f32 dt)
 	iPreviousState = iCurrentState;
 }
 
-void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
+bool PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 {
 	Key k = ev->GetKey();
 
-	b2Vec2 vel = pBody->GetLinearVelocity();
+//	b2Vec2 vel = pBody->GetLinearVelocity();
 
 	if ((k == eKey::Up || k == eKey::W || k == eKey::Space) && iCurrentState != Jump)
 	{
@@ -191,9 +191,10 @@ void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 	}
 
 	//pSprite->AddPosition(vPlayerVectorDirection * fVelocity);
+	return true;
 }
 
-void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
+bool PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 {
 	Key k = ev->GetKey();
 
@@ -232,6 +233,8 @@ void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 	{
 		vPlayerVectorDirection -= VECTOR_DOWN;
 	}
+
+	return true;
 }
 
 bool PlayerEntity::CheckGround()

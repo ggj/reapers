@@ -107,7 +107,7 @@ bool GameScene::Update(f32 dt)
 	if (gGameData->GetLife() == 0)
 	{
 		pGameOverImg->SetVisible(true);
-		pGameOverImg->SetPosition(pCamera->GetPosition() - Vector3f(-400.0f, -300.0f, 0.0f));
+		pGameOverImg->SetPosition(pCamera->GetPosition() - vec3{-400.0f, -300.0f, 0.0f});
 		pPlayer->GetSprite()->SetVisible(false);
 		cFlow.OnEvent(&cOnGameOver, this);
 
@@ -133,7 +133,7 @@ bool GameScene::Shutdown()
 	return true;
 }
 
-void GameScene::OnInputKeyboardRelease(const EventInputKeyboard *ev)
+bool GameScene::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 {
 	Key k = ev->GetKey();
 	if (k == eKey::Escape)
@@ -143,6 +143,8 @@ void GameScene::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 		else
 			cFlow.OnEvent(&cOnPause, this);
 	}
+
+	return true;
 }
 
 void GameScene::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &script)

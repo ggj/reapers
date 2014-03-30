@@ -43,7 +43,7 @@ class GuiManager : public IRocketEventListener
 		void PrintHostage(u32 hostage);
 
 	private:
-		SEED_DISABLE_COPY(GuiManager);
+		SEED_DISABLE_COPY(GuiManager)
 
 		String				sDocument;
 
@@ -56,8 +56,8 @@ class GuiManager : public IRocketEventListener
 		Rocket::Core::Element	*pElementLife;
 		Rocket::Core::Element	*pElementTime;
 		Rocket::Core::Element	*pElementHostage;
-		Rocket::Core::Element	*pElementSfx;
-		Rocket::Core::Element	*pElementBgm;
+//		Rocket::Core::Element	*pElementSfx;
+//		Rocket::Core::Element	*pElementBgm;
 };
 
 #endif // _GUIMANAGER_H_

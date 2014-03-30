@@ -43,7 +43,7 @@ class GameFlow : public IGameApp,
 		virtual void OnSystemShutdown(const EventSystem *ev);
 
 		// IEventInputKeyboardListener
-		virtual void OnInputKeyboardRelease(const EventInputKeyboard *ev);
+		virtual bool OnInputKeyboardRelease(const EventInputKeyboard *ev);
 
 	private:
 		bool SaveSystemFlow() const;
@@ -82,11 +82,11 @@ class GameFlow : public IGameApp,
 		StateMachineTransition cLoadToGame;
 
 		// GUI Elements
-		Rocket::Core::Element	*pElementLife;
+/*		Rocket::Core::Element	*pElementLife;
 		Rocket::Core::Element	*pElementTime;
 		Rocket::Core::Element	*pElementHostage;
 		Rocket::Core::Element	*pElementSfx;
-		Rocket::Core::Element	*pElementBgm;
+		Rocket::Core::Element	*pElementBgm;*/
 
 		String sSceneFile;
 };
